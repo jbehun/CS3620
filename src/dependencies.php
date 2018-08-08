@@ -10,8 +10,8 @@ $container['renderer'] = function() use ($container) {
 $container['db'] = function() use ($container) {
     $settings = $container->get('settings')['db'];
     $dsn = 'mysql:dbname='.$settings['dbname'].
-        'host='.$settings['host'].
-        'port='.$settings['port'];
+        ';host='.$settings['host'].
+        ';port='.$settings['port'];
     $db = new \PDO($dsn, $settings['username'], $settings['password']);
     return $db;
 };
@@ -22,4 +22,10 @@ $container['logger'] = function() use ($container) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
+};
+$container['usercontroller'] = function () use ($container){
+
+    $db = $container->get('db');
+    $log = $container->get('logger');
+    return new \App\UserController($db, $log);
 };

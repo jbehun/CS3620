@@ -1,6 +1,6 @@
 # HW05 Multiple User Feed
 
-## <First Name - Last Name>
+## Justin Behunin
 
 ### Initial Setup
 
