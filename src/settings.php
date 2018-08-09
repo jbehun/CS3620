@@ -7,8 +7,8 @@ return [
         'db' => [
             'host' => '67.205.183.11',
             'port' => '3306',
-            'dbname' => 'feed_donstringham',
-            'username' => 'donstringham',
+            'dbname' => 'feed_jbehun',
+            'username' => 'jbehun',
             'password' => 'changeme'
         ],
         // Monolog settings

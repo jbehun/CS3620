@@ -1,16 +1,19 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: justin
- * Date: 8/7/18
- * Time: 6:51 PM
+ * UserController.php
+ *
+ * PHP version 7
+ *
+ *
+ * @category source
+ * @package  App
+ * @author   Justin Behunin
  */
 
 declare(strict_types=1);
 
 namespace App;
 
-use PDO;
 
 class UserController
 {
@@ -24,12 +27,41 @@ class UserController
     }
 
 
-    public function getUser($ip){
+    function getUser($ip){
 
         $this->log->info("Get user with ip $ip '/' route");
-        //$result = $this->db->prepare();
-        //$result->execute();
-        //$data[][] = $result;
+
+        try{
+
+            $sql = "SELECT name FROM users where ip = :ip";
+            $result = $this->db->prepare($sql);
+            $result->execute(['ip' => $ip]);
+
+            return $result->fetchObject();
+
+
+        }catch (\PDOException $e){
+            die($e->getCode() . ": " . $e->getMessage());
+        }
+
     }
 
+
+    function addUser($ip, $name){
+
+
+        try{
+
+            $sql = "INSERT INTO users set ip = :ip, name = :name";
+            $result = $this->db->prepare($sql);
+            $result->execute(array(':ip' => $ip, ':name' => $name));
+            return $result->rowCount();
+
+
+        }catch (\PDOException $e){
+            echo $sql.$e->getMessage();
+            throw new \RuntimeException("Insert Failed");
+        }
+
+    }
 }
