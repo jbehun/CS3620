@@ -22,12 +22,21 @@
             font-weight: 200;
             margin-bottom: 0;
         }
+        .button {
+
+            background-color: #719e40;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            padding: 15px 25px;
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
     </style>
 </head>
 <body>
 <img src="tweetaway.png" height="220" width="260"/>
 <h1>Tweet Away</h1>
 <div>A web social media application to waste away time!</div>
+<div><br><button type="button" class="button" onclick="action.jss">Push me</button></div>
 
 <?php if (isset($name)) : ?>
     <h2>Hello <?= htmlspecialchars($name); ?>!</h2>

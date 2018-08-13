@@ -24,8 +24,11 @@ $container['logger'] = function() use ($container) {
     return $logger;
 };
 $container['usercontroller'] = function () use ($container){
-
-    $db = $container->get('db');
-    $log = $container->get('logger');
-    return new \App\UserController($db, $log);
+    return new \App\UserController($container['db'], $container['logger']);
+};
+$container['feedcontroller'] = function () use ($container){
+    return new \App\FeedController($container['db'], $container['logger']);
+};
+$container['ip'] = function () use ($container){
+    return $_SERVER['REMOTE_ADDR'];
 };

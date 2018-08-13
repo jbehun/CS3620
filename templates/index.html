@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Tweet Away</title>
+    <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            margin: 100px 0 0 0;
+            padding: 0;
+            width: 100%;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+            background-color: midnightblue;
+        }
+
+        h1 {
+            color: #719e40;
+            letter-spacing: -3px;
+            font-family: 'Lato', sans-serif;
+            font-size: 50px;
+            font-weight: 200;
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .button {
+
+            background-color: #719e40;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            padding: 15px 25px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td width="25%" height="600" bgcolor="white">
+            <div>
+                <img src="tweetaway.png" height="250" width="210"/>
+                <h1>Tweet Away</h1>
+                <div>A web social media application to waste away time!</div>
+            </div>
+        </td>
+        <td width=50% height="600" bgcolor="#d3d3d3">
+            <div style="overflow: auto; height: 600px">
+                <br>
+                <ul id="messages" style="color: black"></ul>
+            </div>
+        </td>
+        <td width="25%" height="600" bgcolor="white">
+            <div>
+                <?php if (isset($name)) : ?>
+                <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
+                <?php endif; ?>
+                <form>
+                    <p style="color: black">Name<BR><BR>
+                        <input type="text" id="name" value="<?= htmlspecialchars($name);?>">
+                    </p>
+                    <p style="color: black">Message<BR><BR>
+                        <textarea style="width: 80%; height: 150px" id="message"></textarea>
+                    </p>
+                </form>
+                <button type="button" class="button" id="addMessage">Post</button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="main.js"></script>
+</html>
