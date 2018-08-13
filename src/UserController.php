@@ -73,7 +73,7 @@ class UserController
         $result = $this->db->prepare($sql);
         $result->execute(['ip' => $ip]);
 
-        return $result->fetchObject();
+        return \GuzzleHttp\json_encode($result->fetchObject());
     }
 
     /**
