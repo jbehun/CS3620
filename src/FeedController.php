@@ -39,7 +39,6 @@ public function addMessage($msg){
 }
 
 public function getMessages($numOfMessages){
-    $this->log->info("Get message request '/' route");
 
     $sql = "(SELECT name, message, time From feed ORDER BY time DESC LIMIt $numOfMessages) ORDER BY time";
     $result = $this->db->prepare($sql);

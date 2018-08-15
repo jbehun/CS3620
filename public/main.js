@@ -59,16 +59,16 @@ $(function () {
                 let $userInput = $('#userInput');
                 $userInput.empty();
                 let $pjm = $.parseJSON(user);
-                $userInput.append('<h2>Hello ' + $pjm.name + '!</h2>'
+                $userInput.append('<h2>Welcome!</h2>'
                     + '<form>'
                     + '<p style="color: black">Name<BR><BR>'
-                    + '<input type="text" id="name" value="'+ $pjm.name +'">'
+                    + '<input type="text" id="name" value="'+ $pjm.name +'" readonly>'
                     + '</p>'
                     + '<p style="color: black">Message<BR><BR>'
                     + '<textarea style="width: 80%; height: 150px" id="message"></textarea>'
                     + '</p>'
                     + '</form>'
-                    + '<button type="button" class="button" id="addMessage">Post</button>'
+                    + '<button type="button" class="button" id="addMessage">Post</button> '
                     + '<button type="button" class="button" id="clearMessage">Clear</button>');
 
                 $message = $('#message');
@@ -107,7 +107,7 @@ $(function () {
 
     });
 
-    /*setInterval(function () {
+    setInterval(function () {
 
         $.ajax({
             type: 'GET',
@@ -121,5 +121,5 @@ $(function () {
                 });
             }
         });
-    }, 5000);*/
+    }, 5000);
 });

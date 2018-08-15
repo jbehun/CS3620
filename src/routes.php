@@ -29,10 +29,12 @@ $app->post('/feed', function (Request $request, Response $response, array $args)
 
 $app->post('/user', function (Request $request, Response $response, array $args){
 
+    $ip = $this->ip;
     $newUser = $request->getParsedBody();
-    $name = $newUser['name'];
-    $this->logger->info("New user request $name");
-    return json_encode($newUser);
+    $userController = $this->usercontroller;
+    $userController->adduser($ip,$newUser['name']);
+    $getAddedUser = $userController->getUser($ip);
+    return $getAddedUser;
 
 
 });
