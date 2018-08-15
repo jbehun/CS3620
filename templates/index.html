@@ -59,10 +59,9 @@
             </div>
         </td>
         <td width="25%" height="600" bgcolor="white">
-            <div>
+            <div id="userInput">
                 <?php if (isset($name)) : ?>
                 <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-                <?php endif; ?>
                 <form>
                     <p style="color: black">Name<BR><BR>
                         <input type="text" id="name" value="<?= htmlspecialchars($name);?>">
@@ -72,6 +71,13 @@
                     </p>
                 </form>
                 <button type="button" class="button" id="addMessage">Post</button>
+                <button type="button" class="button" id="clearMessage">Clear</button>
+                <?php endif; ?>
+                <?php if (!isset($name)) : ?>
+                <h2>Welcome<br>Please Sign In</h2><br>
+                <label for="newUser">Enter your name</label><input type="text" id="newUser"><br><br>
+                <button type="button" class="button" id="signIn">Sign In</button>
+                <?php endif; ?>
             </div>
         </td>
     </tr>

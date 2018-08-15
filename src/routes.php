@@ -27,30 +27,41 @@ $app->post('/feed', function (Request $request, Response $response, array $args)
 
 });
 
+$app->post('/user', function (Request $request, Response $response, array $args){
+
+    $newUser = $request->getParsedBody();
+    $name = $newUser['name'];
+    $this->logger->info("New user request $name");
+    return json_encode($newUser);
+
+
+});
+
 $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
     // Sample log message
     $this->logger->info("tweet-away '/' route");
 
-
     if ($args['name'] == NULL) {
         $ip = $this->ip;
         $user = $this->usercontroller;
-        $getUserName = (array)$user->getuser("127.125.125.125");
+        $getUserName = json_decode($user->getuser($ip), true);
 
-        if ($getUserName['name'] != '') {
-
+        if ($getUserName != NULL) {
             $args = $getUserName;
             return $this->renderer->render($response, 'index.html', $args);
         }
     }
 
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+    return $this->renderer->render($response, 'index.html', $args);
 
 });
 
 
 $app->get('/api/test', function (Request $request, Response $response, array $args) {
+
+    print_r($_SERVER);
+    print_r($_SESSION);
     
 });
 
