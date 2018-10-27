@@ -82,4 +82,7 @@ tags
 # unit-testing files
 junit.xml
 
+composer.lock
+logs/
+
 # End of https://www.gitignore.io/api/vim,phpstorm+all,phpcodesniffer
